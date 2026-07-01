@@ -3,27 +3,26 @@ from typing import Optional
 
 from pydantic import BaseModel, Field
 
-SERVICIOS_DISPONIBLES = [
-    "Aplicación de gelish",
-    "Esmalte con calcio",
-    "Decoración de uñas",
-    "Remoción de esmalte",
-]
 
-BEBIDAS_DISPONIBLES = [
-    "Café",
-    "Té",
-    "Refresco",
-    "Agua",
-]
+class ServicioBase(BaseModel):
+    nombre_servicio: str
+    descripcion: Optional[str] = None
 
 
-class ClienteCreate(BaseModel):
-    nombre: str = Field(min_length=1)
-    telefono: str = Field(min_length=1)
+class Servicio(ServicioBase):
+    id: int
+
+
+class ClienteBase(BaseModel):
+    nombre: str
+    telefono: str
     servicio: str
     bebida_preferida: str
     notas: Optional[str] = None
+
+
+class ClienteCreate(ClienteBase):
+    pass
 
 
 class ClienteUpdate(BaseModel):
@@ -34,11 +33,6 @@ class ClienteUpdate(BaseModel):
     notas: Optional[str] = None
 
 
-class Cliente(BaseModel):
+class Cliente(ClienteBase):
     id: int
-    nombre: str
-    telefono: str
-    servicio: str
-    bebida_preferida: str
-    notas: Optional[str] = None
-    fecha_registro: datetime
+    fecha_registro: datetime = Field(default_factory=datetime.now)

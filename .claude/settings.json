@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"from main import app, clientes_db, siguiente_id; print\\(clientes_db, siguiente_id\\)\")"
+    ]
+  }
+}

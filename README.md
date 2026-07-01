@@ -1,12 +1,12 @@
 # Estética de Uñas API
 
-API sencilla con FastAPI para registrar clientes de una estética de uñas. Ver [docs/commands/PROJECT_PLAN_uñas.md](docs/commands/PROJECT_PLAN_uñas.md) para el plan completo.
+Aplicación web sencilla para una estética de uñas, construida con Python y FastAPI. Permite registrar clientes, asociarles servicios y consultar su historial básico. En esta primera versión los datos se manejan en memoria (sin base de datos).
 
-## Uso local
+Ver [docs/PROJECT_PLAN_uñas.md](docs/PROJECT_PLAN_uñas.md) para el plan completo del proyecto.
+
+## Ejecutar localmente
 
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
-
-Luego abrir `http://127.0.0.1:8000/docs` para la documentación interactiva.
