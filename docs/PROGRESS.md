@@ -113,3 +113,13 @@ Fase 13: Preparar archivos para Render (verificar `requirements.txt` y `render.y
 
 ### Próxima fase
 Fase 14: Subir proyecto a GitHub (confirmar que `main.py`, `requirements.txt`, `render.yaml`, `README.md` y `PROJECT_PLAN.md` estén incluidos en el repositorio).
+
+## Fase 14: Subir proyecto a GitHub — PARCIAL (2026-06-30)
+
+- Confirmado que el repositorio ya tiene remoto configurado: `origin` → `https://github.com/LRubioH1/nail-salon-app.git`, rama `main` sincronizada con `origin/main`.
+- Confirmado que `main.py`, `requirements.txt`, `render.yaml`, `README.md`, `models.py`, `docs/PROGRESS.md` y `docs/PROJECT_PLAN_uñas.md` están en el repositorio.
+- Creado el commit local `18aed94` con los cambios de las Fases 2-13.
+- **Pendiente**: el `git push origin main` falló porque no hay credenciales de GitHub configuradas en este entorno (no hay `/dev/tty` disponible ni `gh` CLI instalado). El usuario debe ejecutar `git push origin main` manualmente desde una terminal con sus credenciales configuradas.
+
+### Próxima fase
+Completar el push manual de la Fase 14 (pendiente de credenciales) y luego continuar con la Fase 15: Desplegar en Render.
