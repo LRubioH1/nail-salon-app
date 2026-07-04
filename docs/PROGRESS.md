@@ -58,3 +58,67 @@ Fase 7: Actualizar información del cliente (ruta `PUT /clientes/{cliente_id}`).
 
 ### Próxima fase
 Fase 8: Eliminar clientes (ruta `DELETE /clientes/{cliente_id}`).
+## Fase 8: Eliminar clientes — COMPLETADA (2026-06-30)
+
+- Añadida ruta `DELETE /clientes/{cliente_id}` en `main.py` que elimina el cliente de `clientes_db` y responde con `204 No Content`.
+- Responde con `404` y mensaje "Cliente no encontrado" si el ID no existe.
+- Verificado con `TestClient`: eliminación de un cliente existente (204, luego 404 al consultarlo) y eliminación de un ID inexistente (404).
+
+### Próxima fase
+Fase 9: Consultar catálogo de servicios (ruta `GET /servicios`).
+
+## Fase 9: Consultar catálogo de servicios — COMPLETADA (2026-06-30)
+
+- Añadida en `main.py` la lista fija `servicios_db: list[Servicio]` con los 4 servicios iniciales del catálogo (gelish, esmalte con calcio, decoración de uñas, remoción de esmalte).
+- Añadida ruta `GET /servicios` que devuelve el catálogo completo.
+- Verificado con `TestClient` que la ruta responde `200` con los 4 servicios.
+
+### Próxima fase
+Fase 10: Consultar catálogo de bebidas (ruta `GET /bebidas`).
+
+## Fase 10: Consultar catálogo de bebidas — COMPLETADA (2026-06-30)
+
+- Añadida en `main.py` la lista fija `bebidas_db: list[str]` con las 4 bebidas iniciales (Café, Té, Refresco, Agua).
+- Añadida ruta `GET /bebidas` que devuelve el catálogo completo.
+- Verificado con `TestClient` que la ruta responde `200` con las 4 bebidas.
+
+### Próxima fase
+Fase 11: Validaciones básicas (nombre/teléfono no vacíos, servicio y bebida dentro del catálogo).
+
+## Fase 11: Validaciones básicas — COMPLETADA (2026-06-30)
+
+- Añadidas en `models.py` las constantes `SERVICIOS_VALIDOS` y `BEBIDAS_VALIDAS` como fuente única de verdad del catálogo.
+- Añadidos `field_validator` en `ClienteBase` y `ClienteUpdate` para: nombre no vacío, teléfono no vacío, servicio dentro del catálogo, bebida dentro del catálogo.
+- `main.py` actualizado para reutilizar `BEBIDAS_VALIDAS` en `bebidas_db`.
+- Verificado con `TestClient`: nombre vacío devuelve `422`, servicio fuera de catálogo devuelve `422`, registro válido devuelve `201`.
+
+### Próxima fase
+Fase 12: Documentación automática con Swagger (rutas `/docs` y `/redoc`, ya generadas automáticamente por FastAPI; verificar que funcionan).
+
+## Fase 12: Documentación automática con Swagger — COMPLETADA (2026-06-30)
+
+- No se requirió código adicional: FastAPI genera automáticamente `/docs` (Swagger UI), `/redoc` (ReDoc) y `/openapi.json`.
+- Verificado con `TestClient` que las tres rutas responden `200`.
+
+### Próxima fase
+Fase 13: Preparar archivos para Render (verificar `requirements.txt` y `render.yaml`, y el comando de inicio `uvicorn main:app --host 0.0.0.0 --port $PORT`).
+
+## Fase 13: Preparar archivos para Render — COMPLETADA (2026-06-30)
+
+- Verificado `requirements.txt` con las dependencias `fastapi` y `uvicorn`.
+- Verificado `render.yaml` con `env: python`, `buildCommand: pip install -r requirements.txt` y `startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT`.
+- Verificado que `main.py` importa correctamente (`python -c "import main"`).
+- `README.md` ya incluye instrucciones de ejecución local.
+
+### Próxima fase
+Fase 14: Subir proyecto a GitHub (confirmar que `main.py`, `requirements.txt`, `render.yaml`, `README.md` y `PROJECT_PLAN.md` estén incluidos en el repositorio).
+
+## Fase 14: Subir proyecto a GitHub — PARCIAL (2026-06-30)
+
+- Confirmado que el repositorio ya tiene remoto configurado: `origin` → `https://github.com/LRubioH1/nail-salon-app.git`, rama `main` sincronizada con `origin/main`.
+- Confirmado que `main.py`, `requirements.txt`, `render.yaml`, `README.md`, `models.py`, `docs/PROGRESS.md` y `docs/PROJECT_PLAN_uñas.md` están en el repositorio.
+- Creado el commit local `18aed94` con los cambios de las Fases 2-13.
+- **Pendiente**: el `git push origin main` falló porque no hay credenciales de GitHub configuradas en este entorno (no hay `/dev/tty` disponible ni `gh` CLI instalado). El usuario debe ejecutar `git push origin main` manualmente desde una terminal con sus credenciales configuradas.
+
+### Próxima fase
+Completar el push manual de la Fase 14 (pendiente de credenciales) y luego continuar con la Fase 15: Desplegar en Render.
